@@ -1,0 +1,1 @@
+// Crea una aplicación que haga uso de un registro donde se pueda almacenar los datos de alumnos universitarios. Estos deben incluir: código, nombres, apellidos, edad, dirección, escuela y posteriormente mostrarlos por pantalla.

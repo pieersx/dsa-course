@@ -1,0 +1,3 @@
+2025001,Juan Carlos,Pérez López,21,Calle Falsa 123,Ingeniería de Sistemas
+2025002,María Fernanda,Gómez Torres,22,Avenida Siempre Viva 456,Ingeniería Industrial
+2025003,Luis Alberto,Ramírez Castillo,23,Calle Principal 789,Ciencias de la Computación
