@@ -7,10 +7,10 @@ using namespace std;
 
 void create_file(const string &filename, const string &content)
 {
-    ofstream file(filename);
+    ofstream file(filename, ios::out);
 
     if (!file) {
-        cerr << "Error opening file" << endl;
+        cerr << "Error al abrir el archivo" << endl;
         return;
     }
 
@@ -23,10 +23,10 @@ int main()
     string filename;
     string content;
 
-    cout << "Enter the name of the file to create: ";
+    cout << "Introduzca el nombre del archivo a crear: ";
     getline(cin, filename);
 
-    cout << "Enter the content of the file: ";
+    cout << "Introduzca el contenido del archivo: ";
     getline(cin, content);
 
     create_file(filename, content);

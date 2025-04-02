@@ -1,42 +1,51 @@
-// Crea un registro para guardar nombre, dos apellidos y edad de una persona
+// Crea un registro para guardar nombre, dos apellidos y edad de una persona. Crea dos subprocesos para introducir esos datos en el registro y para mostrarlos por pantalla.
 
 #include <iostream>
-#include <string>
+#include <thread>
 
 using namespace std;
 
 struct Person {
-    string name;
-    string surname1;
-    string surname2;
+    string first_name;
+    string last_name1;
+    string last_name2;
     int age;
 };
 
-void request_data(Person &person)
+void input_data(Person &person)
 {
-    cout << "Enter name: ";
-    getline(cin, person.name);
-    cout << "Enter first surname: ";
-    getline(cin, person.surname1);
-    cout << "Enter second surname: ";
-    getline(cin, person.surname2);
-    cout << "Enter age: ";
-    cin >> person.age;
-};
+    cout << "Introduzca el nombre: ";
+    getline(cin, person.first_name);
 
-void print_data(const Person &person)
+    cout << "Introduzca el primer apellido: ";
+    getline(cin, person.last_name1);
+
+    cout << "Introduzca el segundo apellido: ";
+    getline(cin, person.last_name2);
+
+    cout << "Introduzca la edad: ";
+    cin >> person.age;
+
+    cin.ignore();
+}
+
+void display_data(const Person &person)
 {
-    cout << "Name: " << person.name << endl;
-    cout << "First surname: " << person.surname1 << endl;
-    cout << "Second surname: " << person.surname2 << endl;
-    cout << "Age: " << person.age << endl;
+    cout << "Nombre: " << person.first_name << endl;
+    cout << "Primer apellido: " << person.last_name1 << endl;
+    cout << "Segundo apellido: " << person.last_name2 << endl;
+    cout << "Edad: " << person.age << endl;
 }
 
 int main()
 {
     Person person;
-    request_data(person);
-    print_data(person);
+
+    thread t1(input_data, ref(person));
+    t1.join();
+
+    thread t2(display_data, cref(person));
+    t2.join();
 
     return 0;
 }

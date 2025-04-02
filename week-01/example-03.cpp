@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-    ifstream file("cursos.txt");
+    ifstream file("cursos.txt", ios::in);
 
     if (!file) {
         cerr << "Error al abrir el archivo" << endl;

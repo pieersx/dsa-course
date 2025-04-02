@@ -9,29 +9,62 @@ struct Node {
     Node *next;
 };
 
+struct Queue {
+    Node *front;
+    Node *rear;
+
+    Queue()
+    {
+        front = nullptr;
+        rear = nullptr;
+    }
+};
+
 bool empty(Node *front)
 {
     return front == nullptr;
 }
 
-void enqueue(Node *&front, Node *&rear, int value)
+void enqueue(Queue &q, int value)
 {
     Node *newNode = new Node();
     newNode->data = value;
     newNode->next = nullptr;
 
-    if (empty(front)) {
-        front = newNode;
+    if (q.rear == nullptr) {
+        q.front = newNode;
+        q.rear = newNode;
     } else {
-        rear->next = newNode;
+        q.rear->next = newNode;
+        q.rear = newNode;
     }
-
-    rear = newNode;
 }
 
-void display(Node *front)
+void dequeue(Queue &q)
 {
-    Node *current = front;
+    if (empty(q.front)) {
+        cout << "La cola está vacía." << endl;
+        return;
+    }
+
+    Node *temp = q.front;
+    q.front = q.front->next;
+
+    if (empty(q.front)) {
+        q.rear = nullptr;
+    }
+
+    delete temp;
+}
+
+void display(Queue &q)
+{
+    if (empty(q.front)) {
+        cout << "La cola está vacía." << endl;
+        return;
+    }
+
+    Node *current = q.front;
     while (current != nullptr) {
         cout << current->data << " -> ";
         current = current->next;
@@ -41,23 +74,38 @@ void display(Node *front)
 
 int main()
 {
-    Node *front = nullptr;
-    Node *rear = nullptr;
-    int value;
+    Queue queue;
+    int choice;
 
-    cout << "Introzca un valor: ";
-    cin >> value;
-    enqueue(front, rear, value);
+    do {
+        int value;
+        cout << "\n1. Insertar elemento (enqueue)";
+        cout << "\n2. Eliminar elemento (dequeue)";
+        cout << "\n3. Mostrar cola";
+        cout << "\n4. Salir";
+        cout << "\n\n-> Elige una opción: ";
+        cin >> choice;
 
-    cout << "Introduzca otro valor: ";
-    cin >> value;
-    enqueue(front, rear, value);
+        switch (choice) {
+        case 1:
+            cout << "Introduce el valor a insertar: ";
+            cin >> value;
+            enqueue(queue, value);
+            break;
+        case 2:
+            dequeue(queue);
+            break;
+        case 3:
+            display(queue);
+            break;
+        case 4:
+            cout << "Saliendo..." << endl;
+            break;
+        default:
+            cout << "Opción no válida. Intenta de nuevo." << endl;
+        }
 
-    cout << "Introduzca otro valor: ";
-    cin >> value;
-    enqueue(front, rear, value);
-
-    display(front);
+    } while (choice != 4);
 
     return 0;
 }

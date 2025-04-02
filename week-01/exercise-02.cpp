@@ -11,7 +11,7 @@ int main()
     cout << "Introduce el nombre del fichero: ";
     cin >> filename;
 
-    ifstream file(filename);
+    ifstream file(filename, ios::in);
     if (!file) {
         cerr << "Error al abrir el archivo" << endl;
         return 1;

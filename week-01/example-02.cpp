@@ -7,14 +7,16 @@ using namespace std;
 
 int main()
 {
-    ofstream file("prueba.txt");
+    ofstream file("prueba.txt", ios::out);
 
     // Verificar si el archivo se abrió correctamente
     if (!file) {
-        cerr << "Error opening file" << endl;
+        cerr << "Error al abrir el archivo" << endl;
         return 1;
     }
 
     file << "Hello, World!" << endl;
     file.close();
+
+    return 0;
 }

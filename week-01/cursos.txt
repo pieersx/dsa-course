@@ -1,5 +1,0 @@
-Curso: Cálculo I, Ciclo: Ciclo I, Escuela: FISI
-Curso: Estructuras de Datos, Ciclo: Ciclo V, Escuela: FISI
-Curso: Sistemas Operativos, Ciclo: Ciclo V, Escuela: FISI
-Curso: Investigación Operativa, Ciclo: Ciclo V, Escuela: FISI
-Curso Electivo: Diseño de Base de Datos, Ciclo: Ciclo V

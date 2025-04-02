@@ -11,7 +11,7 @@ struct Course {
     string cycle;
 };
 
-void saveCoursesToFile(const string &filename, const vector<Course> &courses)
+void add_courses_to_file(const string &filename, const vector<Course> &courses)
 {
     ofstream file(filename, ios::app);
     if (!file) {
@@ -50,9 +50,9 @@ int main()
         cout << "\n¿Quieres añadir otro curso? (s/n): ";
         cin >> choice;
 
-    } while (choice != 'n' || choice != 'N');
+    } while (choice != 'n' && choice != 'N');
 
-    saveCoursesToFile(filename, courses);
+    add_courses_to_file(filename, courses);
 
     return 0;
 }

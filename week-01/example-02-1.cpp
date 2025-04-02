@@ -2,16 +2,15 @@
 
 #include <fstream>
 #include <iostream>
-// #include <string>
 
 using namespace std;
 
 void create_file(const string &filename)
 {
-    ofstream file(filename);
+    ofstream file(filename, ios::out);
 
     if (!file) {
-        cerr << "Error opening file" << endl;
+        cerr << "Error al abrir el archivo" << endl;
         return;
     }
 
@@ -22,8 +21,8 @@ void create_file(const string &filename)
 int main()
 {
     string filename;
-    cout << "Enter the name of the file to create: ";
-    cin >> filename;
+    cout << "Introduzca el nombre del archivo a crear: ";
+    getline(cin, filename);
 
     create_file(filename);
 

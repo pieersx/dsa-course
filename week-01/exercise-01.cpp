@@ -12,9 +12,9 @@ struct Course {
     string school;
 };
 
-void saveCoursesToFile(const string &filename, const vector<Course> &courses)
+void add_courses_to_file(const string &filename, const vector<Course> &courses)
 {
-    ofstream file(filename);
+    ofstream file(filename, ios::out);
     if (!file) {
         cerr << "Error al abrir el archivo para escribir" << endl;
         return;
@@ -40,6 +40,7 @@ int main()
 
     do {
         Course course;
+
         cout << "\nIntroduce el nombre del curso: ";
         cin.ignore();
         getline(cin, course.name);
@@ -57,7 +58,7 @@ int main()
 
     } while (choice != 'n');
 
-    saveCoursesToFile(filename, courses);
+    add_courses_to_file(filename, courses);
 
     return 0;
 }
